@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C //DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>WebSocket test</title>
+</head>
+<body>
+  <script>
+  if ("WebSocket" in window) {
+    var ws = new WebSocket("ws://localhost:8090/hello");
+
+    ws.onopen = function() {
+      // Web Socket is connected. You can send data by send() method.
+      ws.send('browser'); 
+    };
+
+    ws.onmessage = function (evt) {
+        var received_msg = evt.data;
+        alert(received_msg);
+    };
+    ws.onclose = function() {
+        alert("websocket is closed.");
+    };
+  } else {
+    alert("the browser doesn't support WebSocket.");
+  }
+</script>
+</body>
+</html>
