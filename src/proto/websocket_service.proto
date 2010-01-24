@@ -1,0 +1,48 @@
+// Copyright 2010 Tobias Rodäbel. All Rights Reserved.
+//
+// Protocol Buffer declaration for TyphoonAE's WebSocket Service API.
+
+syntax = "proto2";
+
+package org.typhoonae.websocket;
+
+//
+// Error Types.
+//
+message WebSocketServiceError {
+  optional string message = 1;
+  enum ErrorCode {
+    UNSPECIFIED_ERROR = 1;
+  }
+}
+
+message CreateWebSocketURLRequest {
+  optional string success_path = 1;
+}
+
+message CreateWebSocketURLResponse {
+  required string url = 1;
+}
+
+//
+// A Web Socket Message.
+//
+message Message {
+  optional string body = 1;
+}
+
+message WebSocketMessageRequest {
+  required Message message = 1;
+}
+
+message WebSocketMessageResponse {
+  enum StatusCode {
+    NO_ERROR = 0;
+    OTHER_ERROR = 1;
+  }
+  message Status {
+    required StatusCode code = 1 [default = NO_ERROR];
+  }
+  required Status status = 1;
+  required Message message = 2;
+}
