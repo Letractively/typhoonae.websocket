@@ -1,6 +1,6 @@
 ServerRoot "${apache:location}"
 
-Listen 8090
+Listen 8000
 
 LoadModule python_module ${apache:location}/modules/mod_python.so
 

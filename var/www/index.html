@@ -7,24 +7,42 @@
 </head>
 <body>
   <script>
+  var ws = null;
   if ("WebSocket" in window) {
-    var ws = new WebSocket("ws://localhost:8090/hello");
-
+    ws = new WebSocket("ws://localhost:8000/demo");
     ws.onopen = function() {
       // Web Socket is connected. You can send data by send() method.
-      ws.send('browser'); 
+      ws.send('Connected'); 
     };
-
     ws.onmessage = function (evt) {
-        var received_msg = evt.data;
-        alert(received_msg);
+      var received_msg = evt.data;
+      showResponse(received_msg);
     };
     ws.onclose = function() {
-        alert("websocket is closed.");
+      alert("WebSocket is closed.");
     };
   } else {
-    alert("the browser doesn't support WebSocket.");
+    alert("This browser doesn't support WebSocket.");
+  }
+
+  function sendMessage() {
+    var msg = document.getElementById('message').value;
+    ws.send(msg); 
+  }
+
+  function showResponse(msg) {
+    document.getElementById('response').innerHTML = msg
+  }
+ 
+  function clearResponse() {
+    document.getElementById('message').value = '';
+    document.getElementById('response').innerHTML = '';
   }
   </script>
+  <input type="text" id="message" name="message" />
+  <input type="button" value="Send" onclick="sendMessage()" />
+  <hr />
+  <input type="button" value="Clear" onclick="clearResponse()" /><br />
+  <span id="response">
 </body>
 </html>

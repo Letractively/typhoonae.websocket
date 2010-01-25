@@ -22,17 +22,17 @@ Install the WebSocket development environment by typing following commands::
   $ virtualenv --no-site-packages .
   $ ./bin/python bootstrap.py
   $ ./bin/buildout
-  $ PYTHONHOME=`pwd` ./parts/apache/bin/httpd
+  $ WEBSOCKET_HANDLER_LOG_DIR=`pwd`/var PYTHONHOME=`pwd` ./parts/apache/bin/httpd
 
 And if you want to install and run the demo without virtualenv just follow
 these steps::
 
   $ python bootstrap.py
   $ ./bin/buildout
-  $ PYTHONHOME=/absolute/path/to/where/python/is/installed PYTHONPATH=`pwd`/parts/pywebsocket:`pwd`/parts/mod_python/lib/python ./parts/apache/bin/httpd
+  $ WEBSOCKET_HANDLER_LOG_DIR=`pwd`/var PYTHONHOME=/absolute/path/to/where/python/is/installed PYTHONPATH=`pwd`/parts/pywebsocket:`pwd`/parts/mod_python/lib/python ./parts/apache/bin/httpd
 
 You get a fully configured Apache providing WebSockets. Use a browser which
-supports WebSockets and visit http://localhost:8090 to see if it works.
+supports WebSockets and visit http://localhost:8000 to see if it works.
 
 Stop httpd by typing::
 
