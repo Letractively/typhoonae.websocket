@@ -14,6 +14,23 @@ version.
 
 See http://pypi.python.org/pypi/virtualenv for further information.
 
+Requirements
+------------
+
+Most of the required libraries and programs will be installed by zc.buildout.
+See the buildout.cfg file.
+
+The buildout needs Python and the tools contained in /bin and /usr/bin of a
+standard installation of the Linux operating environment. You should ensure
+that these directories are on your PATH and following programs can be found:
+
+ - Python 2.5.2+ (3.x is not supported!)
+ - gcc and g++
+ - make
+ - autoconf
+ - curl
+ - libtool
+
 Buildout
 --------
 
