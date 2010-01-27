@@ -29,6 +29,7 @@ message CreateWebSocketURLResponse {
 //
 message Message {
   optional string body = 1;
+  optional string socket = 2;
 }
 
 message WebSocketMessageRequest {
